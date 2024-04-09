@@ -4,16 +4,22 @@ import Cart from "../assets/cart.svg";
 import Wishlist from "../assets/wishlist.svg";
 import MenuSvg from "../assets/menu.svg";
 import { useState } from "react";
+import useCart from "../contexts/carts/useCart";
 
 const NavBar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { isOpen, openCart, closeCart } = useCart();
 
   const toggle = () => {
     setOpenMenu(!openMenu);
   };
 
+  const handleToggleCart = () => {
+    isOpen ? closeCart() : openCart();
+  };
+
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 sticky top-0 z-50">
+    <nav className="h-20 flex items-center justify-between flex-wrap bg-teal-500 sticky top-0 z-50">
       <div className="relative flex">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <img
@@ -94,17 +100,17 @@ const NavBar = () => {
             />
             Wishlist
           </a>
-          <a
-            href="#"
+          <button
             className="inline-block text-teal-200 hover:text-white text-sm p-2"
+            onClick={handleToggleCart}
           >
             <img
               className="h-6 w-6 md:h-10 md:w-10"
               src={Cart}
               alt="Your SVG"
             />
-            User
-          </a>
+            Cart
+          </button>
         </div>
       </div>
     </nav>

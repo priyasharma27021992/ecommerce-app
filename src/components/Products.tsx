@@ -1,3 +1,4 @@
+import useCart from "../contexts/carts/useCart";
 import { IProduct } from "../models";
 
 type IProducts = {
@@ -5,6 +6,11 @@ type IProducts = {
 };
 
 const Products = ({ products }: IProducts) => {
+  const { addProduct } = useCart();
+
+  const handleAddCart = (product: IProduct) => {
+    addProduct({ ...product, quantity: 1 });
+  };
   return (
     <div>
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -39,7 +45,10 @@ const Products = ({ products }: IProducts) => {
                   </p>
                 </div>
               </div>
-              <button className="w-full my-4 px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none">
+              <button
+                className="w-full my-4 px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none"
+                onClick={() => handleAddCart(product)}
+              >
                 Add To Cart
               </button>
             </div>

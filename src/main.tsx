@@ -5,11 +5,14 @@ import "./index.css";
 
 /* Context Providers */
 import { ProductsProvider } from "../src/contexts/products";
+import { CartProvider } from "./contexts/carts/CartContextProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ProductsProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </ProductsProvider>
   </React.StrictMode>
 );

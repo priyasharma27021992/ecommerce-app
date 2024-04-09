@@ -11,6 +11,16 @@ export interface IProduct {
   color: string;
 }
 
+export interface ICartProduct extends IProduct {
+  quantity: number;
+}
+
+export interface ICartTotal {
+  productQuantity: number;
+  totalPrice: number;
+  currencyFormat: string;
+}
+
 export interface IGetProductsResponse {
   data: {
     products: IProduct[];
