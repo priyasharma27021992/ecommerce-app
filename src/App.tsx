@@ -12,7 +12,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/app",
+    basename: "/ecommerce-app",
   }
 );
 
