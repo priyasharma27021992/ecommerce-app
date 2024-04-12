@@ -4,12 +4,17 @@ import Cart from "./components/Cart";
 import NavBar from "./components/NavBar";
 import Home from "./pages/home";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Home />,
+    },
+  ],
   {
-    path: "/",
-    element: <Home />,
-  },
-]);
+    basename: "/app",
+  }
+);
 
 function App() {
   return (
